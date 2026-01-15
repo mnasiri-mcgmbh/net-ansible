@@ -12,4 +12,4 @@
 
     - name: Display facts variables
       debug:
-        var: config_output.stdout
+        var: config_output.stdout_lines
