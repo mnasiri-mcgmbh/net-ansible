@@ -1,0 +1,15 @@
+---
+- name: Check MikroTik RouterOS Version
+  hosts: mikrotik
+  gather_facts: false
+
+  tasks:
+    - name: Check Routeros Version
+      routeros_command:
+        commands: "/system package print"
+      register: version_output
+      changed_when: false
+
+    - name: Display facts variables
+      debug:
+        var: version_output.stdout

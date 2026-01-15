@@ -1,0 +1,15 @@
+---
+- name: Check MikroTik RouterOS Configs
+  hosts: mikrotik
+  gather_facts: false
+
+  tasks:
+    - name: Check Routeros Configs
+      routeros_command:
+        commands: "/export show-sensitive terse"
+      register: config_output
+      changed_when: false
+
+    - name: Display facts variables
+      debug:
+        var: config_output.stdout
